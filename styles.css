@@ -1,0 +1,441 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* general */
+
+body {
+    font-family: 'Rethink Sans', "Regular";
+    height: 100vh;
+    background: rgba(196, 200, 197, 1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+h1 {
+  color: rgba(60, 89, 70, 0.7);
+  font-family: "Black Han Sans";
+  font-size: 128px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1px;
+  text-align: left;
+  text-shadow: 2px 5px 7px rgba(195, 201, 197, 0.8), 0px 0px 2px rgba(0, 0, 0, 1);
+}
+
+h2 {
+  color: #3B4C41;
+  font-family: "Rethink Sans";
+  font-size: 52px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+h3 {
+  color: rgba(129, 148, 135, 0.3);
+  background-clip: text;
+  text-shadow: 0px 4px 20px #000;
+  font-family: "Rethink Sans", "bold";
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 1px 3px 5px rgba(195, 201, 197, 0.6), 0 0px 0px rgba(38, 62, 47, 1);
+}
+
+p {
+  color: rgba(91, 114, 99, 1);
+  font-family: "Rethink Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.project-card p {
+  color: #3B4C41;
+  font-family: "Rethink Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+small {
+  color: rgba(91, 114, 99, 1);
+  font-family: "Rethink Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: 1;
+  letter-spacing: 1px;
+  margin: 0;
+  text-shadow: 1px 1px 2px rgba(195, 201, 197, 0.6), 0 0px 0px rgba(38, 62, 47, 1);
+}
+
+.page-link {
+  color: rgba(91, 114, 99, 1); /* original color */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a.page-link:hover small {
+  color: #C4C8C5;
+  text-shadow: 1px 1px 2px rgba(38, 62, 47, 1), 0 0px 0px rgba(195, 201, 197, 0.6);
+}
+
+/* general navigation */
+.gen-nav-container {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+/* landing page */
+.landing-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(196, 200, 197, 1);
+  /* padding: 0 60px; */
+}
+
+.blurred-bg {
+  width: 90vw;
+  height: 85vh;
+  background: rgba(129, 148, 135, 0.66); 
+  filter: blur(25px);
+  border-radius: 58px;
+  z-index: 0;
+}
+
+.landing-layout {
+  position: absolute;
+  width: 90%;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  padding: 10vw;
+}
+
+.landing-header-content {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+/* landing navigation */
+
+.smiley {
+  position: absolute;
+  width: 433px;
+  height: 433px;
+  margin-right: 10px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 40px rgba(255, 217, 0, 0.3));
+  transition: transform 1s ease-in-out;
+}
+
+.nav-section {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4rem;
+}
+
+.nav-container {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 217, 0, 0.7);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  opacity: 0;
+  transform: scale(0);
+  cursor: pointer;
+  font-size: 20px;
+  color: #333;
+  box-shadow: 0 5px 20px rgba(255, 217, 0, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  text-decoration: none;
+}
+
+.nav-icon::after {
+  content: attr(title);
+  position: absolute;
+  right: 60px;
+  white-space: nowrap;
+  color: #5B7263;
+  font-family: "Rethink Sans", "Regular";
+  font-size: 16px;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.nav-icon:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav-icon:hover {
+  background: rgba(255, 215, 0, 0.9);
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4);
+}
+
+.nav-container:hover .nav-icon {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.nav-container:hover .smiley {
+  transform: rotate(130deg);
+}
+
+.nav-icon:nth-child(2) { /* Projects - Top */
+  top: 0%;
+  left: 12%;
+  transform: translateX(-50%) scale(0);
+  transition-delay: 0.1s;
+}
+
+.nav-icon:nth-child(3) { /* About - Top Right */
+  top: 20%;
+  left: -5%;
+  transform: translateX(-50%) scale(0);
+  transition-delay: 0.2s;
+}
+
+.nav-icon:nth-child(4) { /* Contact - Right */
+  top: 45%;
+  left: -8%;
+  transform: translateY(-50%) scale(0);
+  transition-delay: 0.3s;
+}
+
+.nav-icon:nth-child(5) { /* Contact - Right */
+  top: 70%;
+  left: -8%;
+  transform: translateY(-50%) scale(0);
+  transition-delay: 0.4s;
+}
+
+.nav-container:hover .nav-icon:nth-child(2) {
+  transform: translateX(-50%) scale(1);
+}
+
+.nav-container:hover .nav-icon:nth-child(3) {
+  transform: translateX(-50%) scale(1);
+}
+
+.nav-container:hover .nav-icon:nth-child(4) {
+  transform: translateX(-50%) scale(1);
+}
+
+/* projects page */
+
+.projects-hero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  scroll-behavior: smooth;
+  scroll-snap-type: none;
+  overflow-x: auto;
+  background: rgba(196, 200, 197, 1);
+  z-index: 0;
+}
+
+.projects-header-container {
+  flex: 0 0 80vw;
+  height: 100vh;
+  scroll-snap-align: start;
+  padding: 0 5vw;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  z-index: 0;
+}
+
+.projects-header-content {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: absolute;
+  z-index: 5;
+  background: transparent;
+  padding: 10vw;
+  gap: 10px;
+}
+
+.blurred-bg-project {
+  width: 100%;
+  height: 85vh;
+  background: rgba(129, 148, 135, 0.66); 
+  filter: blur(25px);
+  border-radius: 58px;
+  z-index: 0;
+}
+
+.projects-description-container {
+  flex: 0 0 65vw;
+  height: 100vh;
+  padding: 0 5vw;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  position: relative
+}
+
+.projects-description-content {
+  width: 85%;
+  height: 60vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  z-index: 5;
+  background: transparent;
+  padding: 5vw;
+}
+
+.arrow-button {
+  width: 80px;
+  height: 80px;
+  background: url('images/arrow-1.svg') no-repeat center center;
+  background-size: contain;
+  border: none;
+}
+
+/* Individual project panels */
+.project-card {
+  flex: 0 0 50vw;
+  height: 100vh;
+  padding: 0 5vw;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card img {
+  /* padding: 0 5vw; */
+  width: 100%;
+  height: 85vh;
+  display: block;
+  border-radius: 58px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+}
+
+.project-card .top-image {
+  width: 20%;
+  height: auto;
+  display: block;
+  z-index: 2;
+}
+
+.project-card .blur-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(25px);
+  /* background: rgba(0, 0, 0, 0.1); */
+  z-index: 1;
+  transition: all 0.5s ease;
+}
+.project-card .opacity-layer{
+  opacity: 0.5;
+}
+
+.project-card:hover .blur-layer {
+  opacity: 0;
+  filter: blur(0);
+}
+
+.project-card .title-content {
+  display: flex;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  padding: 30% 0;
+  gap: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* about page */
+
+
